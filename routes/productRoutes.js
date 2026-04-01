@@ -7,9 +7,11 @@ const {
   createFurniture,
   updateFurniture,
   deleteFurniture,
+  getFeaturedFurniture,
 } = require("../controllers/productController");
 
 router.get("/", getAllFurniture);
+router.get("/featured", getFeaturedFurniture);
 router.get("/:id", getFurnitureById);
 router.post("/", createFurniture);
 router.put("/:id", updateFurniture);
