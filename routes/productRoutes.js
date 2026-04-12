@@ -10,12 +10,14 @@ const {
   getFeaturedFurniture,
 } = require("../controllers/productController");
 
+const { protect, adminOnly } = require("../middleware/authMiddleware");
+
 router.get("/", getAllFurniture);
 router.get("/featured", getFeaturedFurniture);
 router.get("/:id", getFurnitureById);
-router.post("/", createFurniture);
-router.put("/:id", updateFurniture);
-router.delete("/:id", deleteFurniture);
+router.post("/", protect, adminOnly, createFurniture);
+router.put("/:id", protect, adminOnly, updateFurniture);
+router.delete("/:id", protect, adminOnly, deleteFurniture);
 
 // OLD INLINE ROUTES - before controller refactor
 
